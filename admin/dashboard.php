@@ -1,3 +1,8 @@
+<?php
+session_start();
+$con = mysqli_connect("localhost", "root", "", "bentaph");
+if(isset($_SESSION["email"])){
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +37,7 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -685,3 +690,9 @@
         <script src="../assets/js/datatables-simple-demo.js"></script>
     </body>
 </html>
+<?php
+
+}else{
+    echo "<script>window.location = 'login.php';</script>";
+}
+?>
