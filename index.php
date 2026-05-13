@@ -50,7 +50,7 @@
                     <h1 class="display-4 fw-bolder">Shop in style</h1>
                     <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
                     <a href="item-details.php" class="btn btn-primary">View Product</a>
-                    <a href="admin/dashboard.php" class="btn btn-danger">Go to Admin</a>
+                    <a href="admin/login.php" class="btn btn-danger">Go to Admin</a>
                 </div>
             </div>
         </header>
