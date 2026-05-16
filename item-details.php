@@ -1,3 +1,8 @@
+<?php
+session_start();
+$con = mysqli_connect("localhost", "root", "", "bentaph");
+if(isset($_SESSION["email"])){
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,6 +28,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -183,3 +189,9 @@
         <script src="js/item-scripts.js"></script>
     </body>
 </html>
+<?php
+
+}else{
+    echo "<script>window.location = 'login.php';</script>";
+}
+?>
