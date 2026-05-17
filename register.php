@@ -25,27 +25,27 @@ $con = mysqli_connect("localhost", "root", "", "bentaph");
                                         <form method="POST">
 
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="fullname" type="text" name="fullname" />
+                                                <input class="form-control" id="fullname" type="text" name="fullname" required />
                                                 <label for="inputEmail">Fullname:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="age" type="number" name="age" />
+                                                <input class="form-control" id="age" type="number" name="age" required />
                                                 <label for="inputEmail">Age:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="contact_number" type="number" name="contact_number" />
+                                                <input class="form-control" id="contact_number" type="number" name="contact_number" required />
                                                 <label for="inputEmail">Contact Number:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="address" type="text" name="address" />
+                                                <input class="form-control" id="address" type="text" name="address" required />
                                                 <label for="inputEmail">Address:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="name@example.com" />
+                                                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="name@example.com" required />
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" />
+                                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" required />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
@@ -73,20 +73,6 @@ $con = mysqli_connect("localhost", "root", "", "bentaph");
                         </div>
                     </div>
                 </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
