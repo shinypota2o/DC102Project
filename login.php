@@ -50,7 +50,7 @@ $con = mysqli_connect("localhost", "root", "", "bentaph");
                                                     echo $count;
                                                     if($count>0){
                                                         $_SESSION['email'] = $email;
-                                                        echo "<script>window.location = 'item-details.php'</script>";
+                                                        echo "<script>window.location = 'index.php'</script>";
                                                     }else{
                                                         echo "<br/> invalid email or password";
                                                     }
