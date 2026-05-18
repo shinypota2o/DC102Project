@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php 
+include("config/connect.php");
+?>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -47,6 +50,7 @@
             </div>
         </nav>
         <!-- Product section-->
+         
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
@@ -70,6 +74,10 @@
                 </div>
             </div>
         </section>
+
+
+
+        
         <!-- Related items section-->
         <section class="py-5 bg-light">
             <div class="container px-4 px-lg-5 mt-5">
