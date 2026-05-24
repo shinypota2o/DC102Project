@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php 
-include("config/connect.php");
+session_start();
+$con = mysqli_connect("localhost", "root", "", "bentaph");
+if(isset($_SESSION["email"])){
 ?>
 <html lang="en">
     <head>
@@ -27,7 +29,7 @@ include("config/connect.php");
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
                     </ul>
-                 
+                  
                 
                 <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
@@ -110,3 +112,9 @@ include("config/connect.php");
     </body>
 </html>
 
+<?php
+
+}else{
+    echo "<script>window.location = 'login.php';</script>";
+}
+?>
