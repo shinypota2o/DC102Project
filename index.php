@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<?php 
-include("config/connect.php");
+<?php
+session_start();
+$con = mysqli_connect("localhost", "root", "", "bentaph");
+if(isset($_SESSION["email"])){
 ?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -89,7 +91,7 @@ include("config/connect.php");
                                         </div>
 
                                         <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="checkout.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="item-details.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
                                         </div> 
                                     </div>
                                 </div>
@@ -109,4 +111,9 @@ include("config/connect.php");
         <script src="js/homepage-scripts.js"></script>
     </body>
 </html>
+<?php
 
+}else{
+    echo "<script>window.location = 'login.php';</script>";
+}
+?>
