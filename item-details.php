@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php 
-include("config/connect.php");
-?>
 <html lang="en">
     <head>
         <meta charset="utf-8" />

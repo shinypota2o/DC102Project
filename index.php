@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<?php 
+<?php
 session_start();
 $con = mysqli_connect("localhost", "root", "", "bentaph");
 if(isset($_SESSION["email"])){
 ?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -91,7 +91,7 @@ if(isset($_SESSION["email"])){
                                         </div>
 
                                         <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="checkout.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="item-details.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
                                         </div> 
                                     </div>
                                 </div>
@@ -111,7 +111,6 @@ if(isset($_SESSION["email"])){
         <script src="js/homepage-scripts.js"></script>
     </body>
 </html>
-
 <?php
 
 }else{
