@@ -50,7 +50,7 @@ if(isset($_SESSION["email"])){
                                 Update Account
                             </a>
 
-                            <a class="nav-link" href="my-account.php">
+                            <a class="nav-link" href="transaction-client.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Transaction List
                             </a>
@@ -67,9 +67,6 @@ if(isset($_SESSION["email"])){
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Personal Information</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
                     </div>  
                 </main>
                 <footer class="py-4 bg-light mt-auto">

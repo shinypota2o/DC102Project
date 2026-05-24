@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 include("config/connect.php");
-$id = $_GET["id"]; 
+$id = $_GET["id"];
 echo $id;
 ?>
 <html lang="en">
@@ -20,42 +20,32 @@ echo $id;
     <body>
 
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.php">Benta.ph</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <a class="navbar-brand" href="#!">Benta.ph</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                     </ul>
-                 
-                <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="my-account.php">My Account</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-                </ul>   
-
-                <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-
                 </div>
             </div>
         </nav>
 
         <!-- Header-->
-        <header class="bg-white py-5">
-            
+        <header class="bg-grey py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shop in style</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">With this shop</p>
+                    <a href="item-details.php" class="btn btn-primary">View Product</a>
+                    <a href="admin/login.php" class="btn btn-danger">Go to Admin</a>
+                </div>
+            </div>
 
             <div class="container">
 
@@ -70,22 +60,21 @@ echo $id;
                     </tr>
 
                     <?php
-                    $total = 0;
 
-                    $q = mysqli_query($con, "
-                        SELECT cart.*, items.itemname 
-                        FROM cart 
-                        LEFT JOIN items ON cart.itemid = items.id 
-                        WHERE cart.clientid=2 
-                        ORDER BY items.itemname
-                    ");
+$q = mysqli_query($con, "
+    SELECT 
+        cart.*,
+        items.itemname,
+        clients.fullname
+    FROM cart
+    LEFT JOIN items ON cart.itemid = items.id
+    LEFT JOIN clients ON cart.clientid = clients.id
+    WHERE cart.clientid = 2
+    ORDER BY items.itemname
+");
 
-                    while($r = mysqli_fetch_array($q)){
-
-                        $subtotal = $r["price"] * $r["quantity"];
-                        $total += $subtotal;
-                    ?>
-
+while($r = mysqli_fetch_array($q)){
+?>
                     <tr>
                         <td>Guest</td>
                         <td><?php echo $r["itemname"]; ?></td>

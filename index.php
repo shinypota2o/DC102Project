@@ -91,7 +91,7 @@ if(isset($_SESSION["email"])){
                                         </div>
 
                                         <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="item-details.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="checkout.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
                                         </div> 
                                     </div>
                                 </div>
