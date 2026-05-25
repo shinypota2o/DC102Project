@@ -10,7 +10,7 @@ $cat = mysqli_fetch_array($q);
     <h1>Category Details</h1>
     <form method="POST">
         <label>Category Name:</label><br/>
-        <input type="text" name="category_name" value="<?php echo $cat["category_name"]; ?>" required><br/>
+        <input type="text" name="categoryname" value="<?php echo $cat["categoryname"]; ?>" required><br/>
         
         <label>Description:</label><br/>
         <input type="text" name="description" value="<?php echo $cat["description"]; ?>" required><br/>
@@ -20,9 +20,9 @@ $cat = mysqli_fetch_array($q);
     </form>
     <?php
     if(isset($_POST["btnupdate"])){
-        $name = $_POST["category_name"];
+        $name = $_POST["categoryname"];
         $desc = $_POST["description"];
-        mysqli_query($con, "UPDATE categories SET category_name='$name', description='$desc' WHERE id=$id");
+        mysqli_query($con, "UPDATE categories SET categoryname='$name', description='$desc' WHERE id=$id");
         echo "<script>window.location = 'categories.php'; </script>";
     }
 

@@ -1,13 +1,13 @@
-<?php
-session_start();
-$con = mysqli_connect("localhost", "root", "", "bentaph");
+<?php $con = mysqli_connect("localhost", "root", "", "bentaph"); 
+
+
 ?>
 <html>
 <body>
     <h1>Manage Categories</h1>
     <form method="POST" action="save_category.php">
         <label>Category Name:</label><br/>
-        <input type="text" name="category_name" required><br/>
+        <input type="text" name="categoryname" required><br/>
         <label>Description:</label><br/>
         <input type="text" name="description" required><br/>
         <input type="submit" name="btnsubmit" value="Add Category">
@@ -27,7 +27,7 @@ $con = mysqli_connect("localhost", "root", "", "bentaph");
         ?>
         <tr>
             <td><?php echo $r["id"]; ?></td>
-            <td><?php echo $r["category_name"]; ?></td>
+            <td><?php echo $r["categoryname"]; ?></td>
             <td><?php echo $r["description"]; ?></td>
             <td>
                 <a href="details.php?id=<?php echo $r["id"]; ?>">Manage</a>
