@@ -72,7 +72,7 @@ if(isset($_SESSION["email"])){
                         ?>
                                 <div class="col-3">
                                     <div class="card mb-3">
-                                        <img src="<?php echo $r["img"]; ?>" class="card-img-top" alt="..." style="max-height:300px !important; object-fit:cover;">
+                                        <img src="admin/<?php echo $r["image"]; ?>" class="card-img-top" alt="..." style="max-height:300px !important; object-fit:cover;">
                                         <div class="card-body">
                                             <div class="text-center">
                                                 <h5 class="fw-bolder"><?php echo $r["itemname"]; ?></h5>
@@ -91,7 +91,7 @@ if(isset($_SESSION["email"])){
                                         </div>
 
                                         <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="checkout.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="item-details.php?id=<?php echo $r["id"]; ?>">View Item</a></div>
                                         </div> 
                                     </div>
                                 </div>

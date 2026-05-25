@@ -48,7 +48,6 @@
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">Welcome to Benta.ph</h1>
                 <p class="lead">Your ultimate Online Shopping Destination</p>
-                <a class="btn btn-lg btn-light" href="#about">Start scrolling!</a>
             </div>
         </header>
         <!-- About section-->
@@ -56,40 +55,22 @@
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
-                        <h2>About this page</h2>
-                        <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+                        <p class="lead">At Benta.ph, we believe that everyone deserves access to quality products without breaking the bank. Our mission is to bring you a diverse range of affordable items that cater to your everyday needs and special occasions alike. Whether you're shopping for the latest fashion trends, home essentials, electronics, or unique gifts, Benta.ph is your go-to online store.</p>
+                        <p class="lead">Our Goal: Affordability Meets Quality</p>
+                        <p class="lead">Benta.ph is committed to offering the best prices on the market without compromising on quality. We understand the importance of value for money, and our goal is to make shopping a delightful experience by providing high-quality products at prices you can afford. By sourcing directly from manufacturers and trusted suppliers, we ensure that our customers get the best deals available.</p>
+                        <p class="lead">Why Shop with Benta.ph?</p>
                         <ul>
-                            <li>Clickable nav links that smooth scroll to page sections</li>
-                            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-                            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-                            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+                            <li>Wide Selection: From trendy apparel and accessories to household gadgets and tech innovations, our extensive catalog has something for everyone.</li>
+                            <li>Customer Satisfaction: Your satisfaction is our top priority. We strive to provide excellent customer service, fast shipping, and a hassle-free return policy.</li>
+                            <li>Secure Shopping: Shop with confidence knowing that your transactions are safe and secure with our advanced encryption technology.</li>
+                            <li>Community Focus: We are proud to support local businesses and artisans by featuring their products on our platform, promoting sustainable and ethical shopping practices.</li>
                         </ul>
+                        <p class="lead">Join the Benta.ph family today and experience the joy of finding great deals on the products you love. Happy shopping!</p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Services section-->
-        <section class="bg-light" id="services">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Services we offer</h2>
-                        <p class="lead">Sulat mo dito yung nasa services</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Contact section-->
-        <section id="contact">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Contact us</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>

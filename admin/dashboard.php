@@ -49,29 +49,24 @@ if(isset($_SESSION["email"])){
                         <div class="nav">
                             
                             <a class="nav-link" href="dashboard.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
 
                             <a class="nav-link" href="dashboard.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 My Account
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Transactions</div>
                             <a class="nav-link" href="categories.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Transaction Lists
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Management</div>
                             <a class="nav-link" href="categories.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Categories
                             </a>
 
-                            <a class="nav-link" href="items.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <a class="nav-link" href="itemsmanagement.php">
                                 Items
                             </a>
         
