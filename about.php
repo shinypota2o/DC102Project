@@ -1,3 +1,18 @@
+<?php
+include 'config/connect.php'; 
+session_start();
+
+$cartCount = 0;
+if (isset($_SESSION['user_id'])) {
+    $clientid = $_SESSION['user_id'];
+    
+    $query = "SELECT COUNT(*) AS total_items FROM cart WHERE clientid = '$clientid' AND quantity > 0";
+    
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($result);
+    $cartCount = $row['total_items'] ?? 0;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,18 +22,18 @@
         <meta name="author" content="" />
         <title>Benta.ph - About Us</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
         <link href="assets/css/about-style.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body id="page-top">
-        <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="index.php">Benta.ph</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="about.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
                     </ul>
                 </div>
@@ -26,25 +41,30 @@
                 <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                  <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                    <?php if (isset($_SESSION['email'])): ?>
                         <li><a class="dropdown-item" href="my-account.php">My Account</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
+                    <?php else: ?>
+                        <li><a class="dropdown-item" href="login.php">Login</a></li>
+                    <?php endif; ?>
+                </ul>
                 </li>
                 </ul>   
 
-                <form class="d-flex">
+                <form class="d-flex" action="cart.php">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $cartCount; ?></span>
                         </button>
                     </form>
             </div>
         </nav>
         <!-- Header-->
-        <header class="bg-primary bg-gradient text-white">
+        <header class="bg-dark bg-gradient text-white">
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">Welcome to Benta.ph</h1>
                 <p class="lead">Your ultimate Online Shopping Destination</p>
@@ -71,13 +91,10 @@
             </div>
         </section>
         
-        <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Benta.ph 2024</p></div>
         </footer>
-        <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
         <script src="js/item-script.js"></script>
     </body>
 </html>

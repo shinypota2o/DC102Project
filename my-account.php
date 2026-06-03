@@ -1,100 +1,142 @@
 <?php
+include 'config/connect.php';
 session_start();
-$con = mysqli_connect("localhost", "root", "", "bentaph");
-if(isset($_SESSION["email"])){
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$cartCount = 0;
+if (isset($_SESSION['user_id'])) {
+    $clientid = $_SESSION['user_id'];
+
+    $query = "SELECT COUNT(*) AS total_items FROM cart WHERE clientid = '$clientid' AND quantity > 0";
+
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($result);
+    $cartCount = $row['total_items'] ?? 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>My Account</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="assets/css/admin-style.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="my-account.php">Benta.ph</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            
-                            <a class="nav-link" href="my-account.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Update Account
-                            </a>
 
-                            <a class="nav-link" href="transaction-client.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Transaction List
-                            </a>
-                            
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Personal Information</h1>
-                    </div>  
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>My Account - Benta.ph</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 56px;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #wrapper {
+            display: flex;
+            flex: 1;
+        }
+
+        #sidebar-wrapper {
+            min-height: 100vh;
+            width: 250px;
+            background-color: #212529;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .sidebar-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            border-bottom: 1px solid #343a40;
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background-color: #343a40;
+            color: white;
+            border-left: 4px solid #0d6efd;
+        }
+
+        #page-content-wrapper {
+            width: 100%;
+            padding: 30px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            border-radius: 12px;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand text-primary" href="index.php">Benta.ph</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About us</a></li>
+                </ul>
+                <a href="cart.php" class="btn btn-outline-dark">
+                    <i class="bi-cart-fill me-1"></i> Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $cartCount; ?></span>
+                </a>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="assets/js/admin-scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="assets/js/datatables-simple-demo.js"></script>
-    </body>
-</html>
-<?php
+    </nav>
 
-}else{
-    echo "<script>window.location = 'login.php';</script>";
-}
-?>
+    <div id="wrapper">
+        <div id="sidebar-wrapper" class="d-none d-md-block shadow">
+            <div class="p-3">
+                <p class="small text-uppercase text-muted fw-bold">User Dashboard</p>
+            </div>
+            <a href="my-account.php" class="sidebar-link active"><i class="fas fa-user-circle me-2"></i> Update Account</a>
+            <a href="transaction-client.php" class="sidebar-link"><i class="fas fa-receipt me-2"></i> Transactions</a>
+            <a href="logout.php" class="sidebar-link">
+                <i class="fas fa-sign-out-alt me-2"></i> Logout
+            </a>
+        </div>
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="mb-4 mt-2">
+                    <h2 class="fw-bold text-dark">Settings</h2>
+                    <p class="text-muted small">Update your personal information and security credentials.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="card-title mb-0 fw-bold text-primary"><i class="fas fa-user-edit me-2"></i>Profile Details</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <?php include 'profile.php' ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 bg-dark text-white text-center mt-auto">
+        <div class="container small">Copyright &copy; Benta.ph 2024</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

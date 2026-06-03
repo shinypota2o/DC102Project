@@ -1,6 +1,6 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost", "root", "", "bentaph");
+include '../config/connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +26,8 @@ $con = mysqli_connect("localhost", "root", "", "bentaph");
                                     <div class="card-body">
                                         <form method="POST">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email address</label>
+                                                <input class="form-control" id="username" type="text" name="username" placeholder="username" />
+                                                <label for="username">Username</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" />
@@ -43,13 +43,12 @@ $con = mysqli_connect("localhost", "root", "", "bentaph");
                                             </div>
                                             <?php
                                                 if(isset($_POST['btnlogin'])){
-                                                    $email = $_POST['email'];
+                                                    $username = $_POST['username'];
                                                     $password = $_POST['password'];
-                                                    $q = mysqli_query($con,"SELECT * FROM adminUsers WHERE email = '$email' AND password = '$password'");
+                                                    $q = mysqli_query($con,"SELECT * FROM adminusers WHERE username = '$username' AND password = '$password'");
                                                     $count = mysqli_num_rows($q);
-                                                    echo $count;
                                                     if($count>0){
-                                                        $_SESSION['email'] = $email;
+                                                        $_SESSION['username'] = $username;
                                                         echo "<script>window.location = 'dashboard.php'</script>";
                                                     }else{
                                                         echo "<br/> invalid email or password";

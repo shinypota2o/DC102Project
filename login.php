@@ -1,6 +1,6 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost", "root", "", "bentaph");
+include 'config/connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,9 +47,10 @@ $con = mysqli_connect("localhost", "root", "", "bentaph");
                                                     $password = $_POST['password'];
                                                     $q = mysqli_query($con,"SELECT * FROM clientUsers WHERE email = '$email' AND password = '$password'");
                                                     $count = mysqli_num_rows($q);
-                                                    echo $count;
                                                     if($count>0){
+                                                        $row = mysqli_fetch_array($q);
                                                         $_SESSION['email'] = $email;
+                                                        $_SESSION['user_id'] = $row['id'];
                                                         echo "<script>window.location = 'index.php'</script>";
                                                     }else{
                                                         echo "<br/> invalid email or password";
