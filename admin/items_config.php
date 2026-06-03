@@ -2,7 +2,6 @@
 session_start();
 include '../config/connect.php';
 
-// Simple login check
 if (!isset($_SESSION["username"])) {
     echo "<script>window.location='login.php';</script>";
     exit;
@@ -10,11 +9,9 @@ if (!isset($_SESSION["username"])) {
 
 $id = $_GET["id"];
 
-// Fetch the specific item details
 $q = mysqli_query($con, "SELECT * FROM items WHERE id = $id");
 $item = mysqli_fetch_array($q);
 
-// HANDLE UPDATE
 if(isset($_POST["btnupdate"])){
     $name = $_POST["itemname"];
     $categoryid = $_POST["categoryid"];
@@ -24,7 +21,6 @@ if(isset($_POST["btnupdate"])){
     echo "<script>alert('Item updated successfully!'); window.location = 'itemsmanagement.php'; </script>";
 }
 
-// HANDLE DELETE
 if(isset($_POST["btndelete"])){
     mysqli_query($con, "DELETE FROM items WHERE id=$id");
     echo "<script>alert('Item deleted!'); window.location = 'itemsmanagement.php'; </script>";
@@ -38,7 +34,6 @@ if(isset($_POST["btndelete"])){
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Edit Item - Benta.ph Admin</title>
 
-    <!-- Bootstrap & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 
@@ -55,7 +50,6 @@ if(isset($_POST["btndelete"])){
 
 <body class="sb-nav-fixed">
 
-<!-- TOP NAVBAR -->
 <nav class="sb-topnav navbar navbar-dark bg-dark px-3">
     <a class="navbar-brand" href="dashboard.php">Benta.ph</a>
     <button class="btn btn-link text-white" id="sidebarToggle"><i class="fas fa-bars"></i></button>
@@ -69,7 +63,6 @@ if(isset($_POST["btndelete"])){
 
 <div id="layoutSidenav" class="d-flex">
 
-    <!-- SIDEBAR -->
     <div class="bg-dark text-white p-3" id="layoutSidenav_nav">
         <a class="nav-link-custom" href="dashboard.php"><i class="fas fa-home me-2"></i> Dashboard</a>
         <a class="nav-link-custom" href="account.php"><i class="fas fa-user-cog me-2"></i> My Account</a>
@@ -82,7 +75,6 @@ if(isset($_POST["btndelete"])){
         <a class="nav-link-custom fw-bold text-info" href="itemsmanagement.php"><i class="fas fa-box me-2"></i> Items</a>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="flex-grow-1">
         <div class="container-fluid p-4">
 
@@ -92,7 +84,6 @@ if(isset($_POST["btndelete"])){
             </div>
 
             <div class="row">
-                <!-- FORM COLUMN -->
                 <div class="col-md-7">
                     <div class="card card-custom p-4 mb-4">
                         <h5 class="mb-4 text-primary">Item Details</h5>
@@ -121,16 +112,13 @@ if(isset($_POST["btndelete"])){
                     </div>
                 </div>
 
-                <!-- IMAGE & DELETE COLUMN -->
                 <div class="col-md-5">
-                    <!-- IMAGE PREVIEW -->
                     <div class="card card-custom p-3 mb-4 text-center">
                         <h6 class="text-muted mb-3">Item Image</h6>
                         <img src="<?php echo $item["image"]; ?>" class="preview-img border shadow-sm mb-2">
                         <small class="text-muted d-block mt-2">File: <?php echo $item["image"]; ?></small>
                     </div>
 
-                    <!-- DELETE ACTION -->
                     <div class="card card-custom border-danger p-4">
                         <h5 class="text-danger mb-3">Danger Zone</h5>
                         <p class="small text-muted">Removing this item will delete it permanently from the shop inventory.</p>
@@ -141,7 +129,7 @@ if(isset($_POST["btndelete"])){
                         </form>
                     </div>
                 </div>
-            </div> <!-- end row -->
+            </div>
 
         </div>
     </div>

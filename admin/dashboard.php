@@ -2,13 +2,11 @@
 session_start();
 include '../config/connect.php';
 
-// Check if logged in
 if (!isset($_SESSION["username"])) {
     echo "<script>window.location = 'login.php';</script>";
     exit;
 }
 
-// Fetch counts for the dashboard cards
 $q1 = mysqli_query($con, "SELECT * FROM transactions WHERE status='Pending'");
 $pending = mysqli_num_rows($q1);
 
@@ -29,7 +27,6 @@ $total_cats = mysqli_num_rows($q4);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard - Benta.ph Admin</title>
 
-    <!-- Bootstrap & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 
@@ -47,7 +44,6 @@ $total_cats = mysqli_num_rows($q4);
 
 <body class="sb-nav-fixed">
 
-<!-- TOP NAVBAR -->
 <nav class="sb-topnav navbar navbar-dark bg-dark px-3">
     <a class="navbar-brand" href="dashboard.php">Benta.ph</a>
     <button class="btn btn-link text-white" id="sidebarToggle">
@@ -65,10 +61,8 @@ $total_cats = mysqli_num_rows($q4);
 
 <div id="layoutSidenav" class="d-flex">
 
-    <!-- SIDEBAR -->
     <div class="bg-dark text-white p-3" id="layoutSidenav_nav">
         
-        <!-- ACTIVE PAGE: Dashboard -->
         <a class="nav-link-custom fw-bold text-info" href="dashboard.php">
             <i class="fas fa-home me-2"></i> Dashboard
         </a>
@@ -94,7 +88,6 @@ $total_cats = mysqli_num_rows($q4);
         </a>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="flex-grow-1">
         <div class="container-fluid p-4">
 
@@ -104,7 +97,6 @@ $total_cats = mysqli_num_rows($q4);
             </div>
 
             <div class="row g-4">
-                <!-- Pending Card -->
                 <div class="col-xl-3 col-md-6">
                     <div class="card card-dashboard bg-warning text-dark h-100">
                         <div class="card-body d-flex justify-content-between align-items-center">
@@ -120,7 +112,6 @@ $total_cats = mysqli_num_rows($q4);
                     </div>
                 </div>
 
-                <!-- Approved Card -->
                 <div class="col-xl-3 col-md-6">
                     <div class="card card-dashboard bg-success text-white h-100">
                         <div class="card-body d-flex justify-content-between align-items-center">
@@ -136,7 +127,6 @@ $total_cats = mysqli_num_rows($q4);
                     </div>
                 </div>
 
-                <!-- Total Items Card -->
                 <div class="col-xl-3 col-md-6">
                     <div class="card card-dashboard bg-primary text-white h-100">
                         <div class="card-body d-flex justify-content-between align-items-center">
@@ -151,8 +141,6 @@ $total_cats = mysqli_num_rows($q4);
                         </div>
                     </div>
                 </div>
-
-                <!-- Categories Card -->
                 <div class="col-xl-3 col-md-6">
                     <div class="card card-dashboard bg-info text-white h-100">
                         <div class="card-body d-flex justify-content-between align-items-center">
@@ -167,7 +155,7 @@ $total_cats = mysqli_num_rows($q4);
                         </div>
                     </div>
                 </div>
-            </div> <!-- end row -->
+            </div> 
 
             <div class="row mt-4">
                 <div class="col-12">
@@ -185,7 +173,6 @@ $total_cats = mysqli_num_rows($q4);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Sidebar toggle functionality matches the My Account page
     document.getElementById("sidebarToggle").onclick = function () {
         let sidebar = document.getElementById("layoutSidenav_nav");
         if (sidebar.style.display === "none") {

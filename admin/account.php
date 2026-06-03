@@ -38,7 +38,6 @@ if (isset($_POST["update_password"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My Account - Benta.ph Admin</title>
 
-    <!-- Bootstrap & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 
@@ -54,7 +53,6 @@ if (isset($_POST["update_password"])) {
 
 <body class="sb-nav-fixed">
 
-<!-- TOP NAVBAR -->
 <nav class="sb-topnav navbar navbar-dark bg-dark px-3">
     <a class="navbar-brand" href="dashboard.php">Benta.ph</a>
     <button class="btn btn-link text-white" id="sidebarToggle">
@@ -72,14 +70,12 @@ if (isset($_POST["update_password"])) {
 
 <div id="layoutSidenav" class="d-flex">
 
-    <!-- SIDEBAR -->
     <div class="bg-dark text-white p-3" id="layoutSidenav_nav">
         
         <a class="nav-link-custom" href="dashboard.php">
             <i class="fas fa-home me-2"></i> Dashboard
         </a>
 
-        <!-- ACTIVE PAGE: My Account -->
         <a class="nav-link-custom fw-bold text-info" href="account.php">
             <i class="fas fa-user-cog me-2"></i> My Account
         </a>
@@ -101,7 +97,6 @@ if (isset($_POST["update_password"])) {
         </a>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="flex-grow-1">
         <div class="container-fluid p-4">
 
@@ -146,7 +141,6 @@ if (isset($_POST["update_password"])) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Sidebar toggle functionality
     document.getElementById("sidebarToggle").onclick = function () {
         let sidebar = document.getElementById("layoutSidenav_nav");
         if (sidebar.style.display === "none") {

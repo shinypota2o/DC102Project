@@ -9,11 +9,9 @@ if (!isset($_SESSION["username"])) {
 
 $id = $_GET["id"];
 
-// Fetch the specific category
 $q = mysqli_query($con, "SELECT * FROM categories WHERE id = $id");
 $cat = mysqli_fetch_array($q);
 
-// HANDLE UPDATE
 if(isset($_POST["btnupdate"])){
     $name = $_POST["categoryname"];
     $desc = $_POST["description"];
@@ -21,7 +19,6 @@ if(isset($_POST["btnupdate"])){
     echo "<script>alert('Category updated!'); window.location = 'categories.php'; </script>";
 }
 
-// HANDLE DELETE
 if(isset($_POST["btndelete"])){
     mysqli_query($con, "DELETE FROM categories WHERE id=$id");
     echo "<script>alert('Category deleted!'); window.location = 'categories.php'; </script>";
@@ -63,7 +60,6 @@ if(isset($_POST["btndelete"])){
 
 <div id="layoutSidenav" class="d-flex">
 
-    <!-- SIDEBAR -->
     <div class="bg-dark text-white p-3" id="layoutSidenav_nav">
         <a class="nav-link-custom" href="dashboard.php"><i class="fas fa-home me-2"></i> Dashboard</a>
         <a class="nav-link-custom" href="account.php"><i class="fas fa-user-cog me-2"></i> My Account</a>
@@ -76,7 +72,6 @@ if(isset($_POST["btndelete"])){
         <a class="nav-link-custom" href="itemsmanagement.php"><i class="fas fa-box me-2"></i> Items</a>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="flex-grow-1">
         <div class="container-fluid p-4">
 
@@ -87,7 +82,6 @@ if(isset($_POST["btndelete"])){
 
             <div class="row">
                 <div class="col-md-6">
-                    <!-- UPDATE FORM CARD -->
                     <div class="card card-custom p-4 mb-4">
                         <h5 class="mb-3">Category Information</h5>
                         <form method="POST">
@@ -109,7 +103,6 @@ if(isset($_POST["btndelete"])){
                 </div>
 
                 <div class="col-md-4">
-                    <!-- DELETE ACTION CARD -->
                     <div class="card card-custom border-danger p-4">
                         <h5 class="text-danger mb-3">Danger Zone</h5>
                         <p class="small text-muted">Deleting this category will remove it from the system. This cannot be undone.</p>

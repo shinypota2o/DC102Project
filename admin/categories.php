@@ -2,7 +2,6 @@
 session_start();
 include '../config/connect.php';
 
-// Simple login check
 if (!isset($_SESSION["username"])) {
     echo "<script>window.location='login.php';</script>";
     exit;
@@ -15,8 +14,6 @@ if (!isset($_SESSION["username"])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Categories - Benta.ph Admin</title>
-
-    <!-- Bootstrap & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 
@@ -32,7 +29,6 @@ if (!isset($_SESSION["username"])) {
 
 <body class="sb-nav-fixed">
 
-<!-- TOP NAVBAR -->
 <nav class="sb-topnav navbar navbar-dark bg-dark px-3">
     <a class="navbar-brand" href="dashboard.php">Benta.ph</a>
     <button class="btn btn-link text-white" id="sidebarToggle">
@@ -50,7 +46,6 @@ if (!isset($_SESSION["username"])) {
 
 <div id="layoutSidenav" class="d-flex">
 
-    <!-- SIDEBAR -->
     <div class="bg-dark text-white p-3" id="layoutSidenav_nav">
         <a class="nav-link-custom" href="dashboard.php">
             <i class="fas fa-home me-2"></i> Dashboard
@@ -73,7 +68,6 @@ if (!isset($_SESSION["username"])) {
         </a>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="flex-grow-1">
         <div class="container-fluid p-4">
             
@@ -81,7 +75,6 @@ if (!isset($_SESSION["username"])) {
             <p class="text-muted">Create and organize item categories</p>
 
             <div class="row">
-                <!-- FORM COLUMN -->
                 <div class="col-md-4">
                     <div class="card card-custom p-3 mb-4">
                         <h5 class="card-title mb-3">Add New Category</h5>
@@ -101,7 +94,6 @@ if (!isset($_SESSION["username"])) {
                     </div>
                 </div>
 
-                <!-- TABLE COLUMN -->
                 <div class="col-md-8">
                     <div class="card card-custom p-0 overflow-hidden">
                         <table class="table table-hover align-middle mb-0">
@@ -133,13 +125,11 @@ if (!isset($_SESSION["username"])) {
                         </table>
                     </div>
                 </div>
-            </div> <!-- end row -->
 
         </div>
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     document.getElementById("sidebarToggle").onclick = function () {
